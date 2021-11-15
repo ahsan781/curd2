@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block title %} FormPage {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+              
+                <div class="card-body">
+                  
+  
+ <h2>Notary<a class="btn btn-warning" href="{% url 'Noform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Notrayname</th>
+        <th scope="col">YearEstablished </th>
+          <th scope="col">Ownername</th>
+       <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  n in No  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ n.Notrayname}}</td>
+          <td>   {{ n.YearEstablished }}</td>
+              <td>   {{ n.Ownername}}</td>
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'Noupdateform' n.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'Nodelete' n.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

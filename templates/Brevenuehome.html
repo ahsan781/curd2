@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:90%; margin-left:70px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Bussiness Revenue <a class="btn btn-warning" href="{% url 'breform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"> BussinessReg </th>
+      <th scope="col">  TransNo</th>
+      <th scope="col">       TaransDate</th>
+        <th scope="col">    Chargecode </th>
+         <th scope="col">    Transcurr  </th>
+          <th scope="col">    GrNo </th>
+           <th scope="col">     Revenuetype </th>
+             <th scope="col">     Action </th>
+       
+        
+    </tr>
+  </thead>
+   {% for  d in Da %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.BussinessReg}}</td>
+      <td>   {{ d.TransNo}}</td>
+      <td>   {{ d.TaransDate}}</td>
+      
+      <td>   {{ d.Chargecode}}</td>
+      
+      <td>   {{ d.Transcurr }}</td>
+      <td>   {{ d.GrNo}}</td>
+      
+      <td>   {{ d.Revenuetype}}</td>
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'breuform' d.BussinessID  %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'bredelete' d.BussinessID   %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+ {% endfor %}
+ </table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

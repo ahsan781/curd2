@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+              
+                <div class="card-body">
+                  
+  
+ <h2>IDENTIFICATION<a class="btn btn-warning" href="{% url 'idform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">IDType</th>
+       <th scope="col">OtherID</th>
+       <th scope="col">IDNumber</th>
+       <th scope="col">IDissueBy</th>
+       <th scope="col">IDdate</th>
+       <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  d in ident  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.IDType }}</td>
+        <td>   {{ d.OtherID }}</td>
+        <td>   {{ d.IDNumber }}</td>
+        <td>   {{ d.IDissueBy}}</td>
+        <td>   {{ d.IDdate }}</td>
+       
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'idupdateform' d.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'iddelete' d.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

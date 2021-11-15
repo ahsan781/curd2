@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% block title %} FormPage {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+         <div class="card card-1" >
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Parcel<a class="btn btn-warning" href="{% url 'pform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">  Purchaseinfo</th>
+      <th scope="col"> Landtype</th>
+      <th scope="col">Notary</th>
+      <th scope="col">Existingbuilding</th>
+      <th scope="col">Landpurchaseamount</th>
+      <th scope="col"> PurchaseDate</th>
+      <th scope="col"> FileNO </th>
+      <th scope="col">  LandUsetype</th>
+       <th scope="col">  Landwidth</th>
+        <th scope="col">  landlenght</th>
+         <th scope="col">  Action</th>
+       
+        
+    </tr>
+  </thead>
+   {% for  p in P  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ p.Purchaseinfo}}</td>
+      <td>   {{ p.Landtype}}</td>
+      <td>   {{ p.Notary}}</td>
+      <td>   {{ p.Existingbuilding}}</td>
+      <td>   {{ p.Landpurchaseamount}}</td>
+      <td>   {{ p.PurchaseDate}}</td>
+      <td>   {{ p.FileNO}}</td>
+      <td>   {{ p.LandUsetype}}</td>
+      <td>   {{ p.Landwidth}}</td>
+      <td>   {{ p.landlenght}}</td>
+          
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'puform' p.Registrationid%}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'pdelete' p.Registrationid%}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

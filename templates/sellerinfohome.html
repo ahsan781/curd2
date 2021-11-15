@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block title %} FormPage {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+   
+            <div class="card card-1" >
+              
+                <div class="card-body">
+                  
+  
+ <h2>Sellerinfo<a class="btn btn-warning" href="{% url 'slform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">   Parcel</th>
+      <th scope="col">   FirstName</th>
+      <th scope="col"> SecondName</th>
+      <th scope="col">  LastName</th>
+      <th scope="col">   SurName </th>
+      <th scope="col"> Gender </th>
+        <th scope="col"> DOB </th>
+      <th scope="col">      MobileNO1 </th>
+       <th scope="col">   MobileNo2 </th>
+        <th scope="col">    Email</th>
+        <th scope="col">    Action</th>
+       
+        
+    </tr>
+  </thead>
+   {% for  sl in Sl %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ sl.Parcel}}</td>
+      <td>   {{ sl.FirstName}}</td>
+      <td>   {{ sl.SecondName}}</td>
+      <td>   {{ sl.LastName}}</td>
+      <td>   {{ sl.SurName}}</td>
+      <td>   {{ sl.Gender}}</td>
+       <td>   {{ sl.DOB}}</td>
+      <td>   {{ sl.MobileNO1}}</td>
+      <td>   {{ sl.MobileNo2}}</td>
+      <td>   {{ sl.Email}}</td>
+          
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'slform' sl.Registrationid%}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'sldelete' sl.Registrationid%}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

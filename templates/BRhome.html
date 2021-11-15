@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:90%; margin-left:70px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Bussiness Registrator <a class="btn btn-warning" href="{% url 'brform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">     BussinessReg </th>
+      <th scope="col">  RegFirstName</th>
+      <th scope="col"> BussinessSecondName</th>
+      <th scope="col">    BussinessLastName</th>
+      <th scope="col">    DOB </th>
+        <th scope="col">     Gender </th>
+      <th scope="col">       Telephone</th>
+        <th scope="col">    Action </th>
+       
+        
+    </tr>
+  </thead>
+   {% for  d in Da %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.BussinessReg}}</td>
+      <td>   {{ d.RegFirstName}}</td>
+      <td>   {{ d.BussinessSecondName}}</td>
+      <td>   {{ d.BussinessLastName}}</td>
+      <td>   {{ d.DOB }}</td>
+    <td>   {{ d.Gender}}</td>
+      <td>   {{ d.Telephone}}</td>
+        
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'brform' d.RegistrationID  %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'brdelete' d.RegistrationID %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+ {% endfor %}
+ </table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

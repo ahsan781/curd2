@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:60%; margin-left:270px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>PLOT MAP <a class="btn btn-warning" href="{% url 'PLMform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">RegistrationID</th>
+      <th scope="col">length</th>
+      <th scope="col">Width</th>
+      <th scope="col">Action</th>
+      
+      
+    </tr>
+  </thead>
+   {% for  plm in PLM %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ plm.RegistrationID}}</td>
+          <td>   {{ plm.Lenght}}</td>
+              <td>   {{ plm.Width}}</td>
+                
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'PLMupdateform' plm.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'PLMdelete' plm.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

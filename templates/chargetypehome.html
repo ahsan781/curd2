@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:90%; margin-left:70px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Charge Type<a class="btn btn-warning" href="{% url 'ctform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">       BussinessReg</th>
+
+             <th scope="col">     Action </th>
+       
+        
+    </tr>
+  </thead>
+   {% for  d in Da %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.BussinessReg}}</td>
+  
+    
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'ctform' d.ChagreType %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'ctdelete' d.ChagreType  %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+ {% endfor %}
+ </table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

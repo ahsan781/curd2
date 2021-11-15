@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" >
+          
+                  
+  
+ <h2>Purchase INFO <a class="btn btn-warning" href="{% url 'PIform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table " style='width:100%'>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">District</th>
+      <th scope="col">SubDistrict</th>
+      <th scope="col">Neighbor</th>
+      <th scope="col">PlotNo</th>
+      <th scope="col">Identification</th>
+      <th scope="col"> OwnerFirstName</th>
+      <th scope="col"> OwnerSecondName</th>
+      <th scope="col"> OwnerLastName</th>
+      <th scope="col"> OwnerSurName</th>
+      <th scope="col">Mobile</th>
+       <th scope="col">Email</th>
+             <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  pi in PI  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ pi.District}}</td>
+          <td>   {{ pi.SubDistrict}}</td>
+              <td>   {{ pi.Neighbor}}</td>
+                      <td>   {{ pi.PlotNo}}</td>
+                       <td>   {{ pi.identification }}</td>
+                        <td>   {{ pi.OwnerFirstName}}</td>
+                           <td>   {{ pi.OwnerSecondName}}</td>
+                              <td>   {{ pi.OwnerLastName}}</td>
+                                 <td>   {{ pi.OwnerSurName}}</td>
+                                    <td>   {{ pi.Mobile}}</td>
+                                       <td>   {{ pi.Email}}</td>
+                                      
+                                            
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'PIupdateform' pi.RegistrationNO%}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'PIdelete' pi.RegistrationNO %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

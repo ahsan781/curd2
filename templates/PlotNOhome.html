@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:90%; margin-left:50px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>PROPERTY NO <a class="btn btn-warning" href="{% url 'PNform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">District</th>
+      <th scope="col">SubDistrict</th>
+      <th scope="col">Neighbor</th>
+      <th scope="col">SubNeighbor</th>
+      <th scope="col">PlotNo</th>
+      <th scope="col">RegistrationNo</th>
+      <th scope="col">PropertyNo</th>
+       <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  pn in PN  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ pn.District}}</td>
+          <td>   {{ pn.SubDistrict}}</td>
+              <td>   {{ pn.Neighbor}}</td>
+                  <td>   {{ pn.SubNeighbor}}</td>
+                      <td>   {{ pn.PlotNo}}</td>
+                       <td>   {{ pn.identification }}</td>
+                        <td>   {{ pn.Propertymap}}</td>
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'PNupdateform' pn.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'PNdelete' pn.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

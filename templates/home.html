@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block title %} FormPage {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1 ">
+              
+                <div class="card-body">
+                  
+  
+ <h2>District<a class="btn btn-warning" href="{% url 'diform'  %}" style='margin-left:130px'>ADD</a></h2>
+  </br>               
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">District Name</th>
+       <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  d in district  %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.name }}</td>
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'updateform' d.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'didelete' d.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

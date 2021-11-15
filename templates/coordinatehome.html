@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:90%; margin-left:70px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Coordinate <a class="btn btn-warning" href="{% url 'cform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">     SequesnceNo </th>
+      <th scope="col">  Parcel</th>
+      <th scope="col">  Longitude</th>
+      <th scope="col">    Latitude</th>
+      <th scope="col">     Attribute </th>
+        <th scope="col">    Action </th>
+       
+        
+    </tr>
+  </thead>
+   {% for  d in Da %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.SequesnceNo }}</td>
+      <td>   {{ d.Parcel}}</td>
+      <td>   {{ d.Longitude}}</td>
+      <td>   {{ d.Latitude}}</td>
+      <td>   {{ d.Attribute }}</td>
+        
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'cform' d.RegistrationNo %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'cdelete' d.RegistrationNo %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+ {% endfor %}
+ </table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

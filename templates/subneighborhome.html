@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block title %} FormPage {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-body">
+  <h2>SubNeighbor   <a class="btn btn-warning" href="{% url 'snform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+ <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Neighbor</th>
+      <th scope="col">SubNeighbor</th>
+       <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+   {% for  sn in sneighbor%}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ sn.Neigbour }}</td>
+      <td>   {{ sn.SubNeighborname }}</td>
+      <td>
+     
+        <a class="btn btn-success" href="{% url 'snupdateform' sn.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'sndelete' sn.id %}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+  {% endfor %}
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}

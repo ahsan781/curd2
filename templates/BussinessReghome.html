@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% block title %} {% endblock title %}
+{% block body %}
+{% load static %}
+
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+    
+            <div class="card card-1" style='width:97%; margin-left:18px;'>
+              
+                <div class="card-body" >
+                  
+  
+ <h2>Bussiness Registration <a class="btn btn-warning" href="{% url 'bform'  %}" style='margin-left:100px'>ADD</a></h2>
+  </br>               
+  <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">      PropertyID </th>
+      <th scope="col">  District</th>
+      <th scope="col">SubDistrict </th>
+      <th scope="col">    Neighbor</th>
+      <th scope="col">  PlotNo  </th>
+        <th scope="col"> licenseNO</th>
+      <th scope="col">      BussinessName</th>
+        <th scope="col">    BussinessType </th>
+        <th scope="col">      BussinessGrade  </th>
+        <th scope="col">    Type</th>
+        <th scope="col">    BillingType </th>
+        <th scope="col">    Action </th>
+       
+        
+    </tr>
+  </thead>
+   {% for  d in Da %}
+  <tbody>
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>   {{ d.PropertyID}}</td>
+      <td>   {{ d.District}}</td>
+      <td>   {{ d.SubDistrict }}</td>
+      <td>   {{ d.Neighbor}}</td>
+      <td>   {{ d.PlotNo }}</td>
+    <td>   {{ d.licenseNO}}</td>
+      <td>   {{ d.BussinessName}}</td>
+         <td>   {{ d.BussinessType}}</td>
+         <td>   {{ d.BussinessGrade }}</td>
+            <td>   {{ d.Type }}</td>
+               <td>   {{ d.BillingType}}</td>
+      
+
+
+          
+      <td>
+    
+        <a class="btn btn-success" href="{% url 'bform' d.BussinessID %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'bdelete' d.BussinessID%}">Delete</a>
+                                  
+      </td>
+    </tr>
+   
+  </tbody>
+ {% endfor %}
+ </table>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock body %}
