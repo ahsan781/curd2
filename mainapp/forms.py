@@ -49,31 +49,29 @@ class PropertyMapForm(forms.ModelForm):
     MasterplanMap = forms.FileField(required=False)
     class Meta:
         model = PropertyMap
-        fields = ('RegistrationID','PropertyNumber','Parcelmap','MasterplanMap')
+        fields = ('Purchaseinfo','PropertyNumber','Parcelmap','MasterplanMap')
     def __init__(self, *args, **kwargs):
         super(PropertyMapForm,self).__init__(*args, **kwargs)
-        self.fields['RegistrationID'].empty_label = "Select"
+        self.fields['Purchaseinfo'].empty_label = "Select"
 class Plotmapform(forms.ModelForm):
 
     class Meta:
         model = Plotmap
-        fields = ('RegistrationID', 'Lenght', 'Width')
+        fields = ('purchaseinfo', 'Lenght', 'Width')
     def __init__(self, *args, **kwargs):
         super(Plotmapform,self).__init__(*args, **kwargs)
-        self.fields['RegistrationID'].empty_label = "Select"
+        self.fields['purchaseinfo'].empty_label = "Select"
 class Plotnoform(forms.ModelForm):
     
     class Meta:
         model = PlotNo
-        fields = ('District', 'SubDistrict', 'Neighbor', 'SubNeighbor', 'PlotNo','identification','Propertymap')
+        fields = ('District', 'SubDistrict', 'Neighbor', 'SubNeighbor','PlotNo')
     def __init__(self, *args, **kwargs):
         super(Plotnoform,self).__init__(*args, **kwargs)
         self.fields['District'].empty_label = "Select"
         self.fields['SubDistrict'].empty_label = "Select"
         self.fields['Neighbor'].empty_label = "Select"
         self.fields['SubNeighbor'].empty_label = "Select"
-        self.fields['identification'].empty_label = "Select"
-        self.fields['Propertymap'].empty_label = "Select"
 class Purchaseinfoform(forms.ModelForm):
     
     class Meta:

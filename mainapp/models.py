@@ -26,6 +26,15 @@ class SubNeighbor(models.Model):
   SubNeighborname = models.CharField(max_length=200)
   def __str__(self):
         return self.SubNeighborname
+class PlotNo(models.Model):
+    id = models.AutoField(primary_key=True)
+    District = models.ForeignKey(District,on_delete=models.CASCADE)
+    SubDistrict = models.ForeignKey(SubDistrict,on_delete=models.CASCADE)
+    Neighbor = models.ForeignKey(Neighbor,on_delete=models.CASCADE)
+    SubNeighbor = models.ForeignKey(SubNeighbor,on_delete=models.CASCADE)
+    PlotNo =  models.PositiveIntegerField(blank=True)
+    def __str__(self):
+             return "%s" % (self.PlotNo)
 class identification(models.Model):
     id = models.AutoField(primary_key=True)
     IDType =  models.CharField(max_length=200)
@@ -36,30 +45,6 @@ class identification(models.Model):
     ScanedID = models.FileField(upload_to ='identification/',null=True)
     def __str__(self):
         return self.IDType
-class PropertyMap(models.Model):
-    id = models.AutoField(primary_key=True)
-    RegistrationID = models.ForeignKey(identification,on_delete=models.CASCADE)
-    PropertyNumber =  models.PositiveIntegerField(blank=True)
-    Parcelmap = models.FileField(upload_to ='parcelmap/',null=True)
-    MasterplanMap = models.FileField(upload_to ='masterplanmap/',null=True)
-    def __str__(self):
-             return "%s" % (self.PropertyNumber)
-class Plotmap(models.Model):
-    id = models.AutoField(primary_key=True)
-    RegistrationID = models.ForeignKey(identification,on_delete=models.CASCADE)
-    Lenght = models.CharField(max_length=500)
-    Width = models.CharField(max_length=500)
-class PlotNo(models.Model):
-    id = models.AutoField(primary_key=True)
-    District = models.ForeignKey(District,on_delete=models.CASCADE)
-    SubDistrict = models.ForeignKey(SubDistrict,on_delete=models.CASCADE)
-    Neighbor = models.ForeignKey(Neighbor,on_delete=models.CASCADE)
-    SubNeighbor = models.ForeignKey(SubNeighbor,on_delete=models.CASCADE)
-    PlotNo =  models.PositiveIntegerField(blank=True)
-    identification = models.ForeignKey(identification,on_delete=models.CASCADE)
-    Propertymap = models.ForeignKey(PropertyMap,on_delete=models.CASCADE)
-    def __str__(self):
-             return "%s" % (self.PlotNo)
 class Purchaseinfo(models.Model):
     RegistrationNO = models.AutoField(primary_key=True)
     District = models.ForeignKey(District,on_delete=models.CASCADE)
@@ -76,7 +61,6 @@ class Purchaseinfo(models.Model):
     OtherProperty =  models.CharField(max_length=500)
     def __str__(self):
              return "%s" % (self.RegistrationNO)
-
 class Landtype(models.Model):
     id = models.AutoField(primary_key=True)
     Landtype =  models.CharField(max_length=500)
@@ -106,6 +90,21 @@ class Parcel(models.Model):
     landlenght =  models.CharField(max_length=500)
     def __str__(self):
              return "%s" % (self.Registrationid)
+class PropertyMap(models.Model):
+    id = models.AutoField(primary_key=True)
+    Purchaseinfo = models.ForeignKey(Purchaseinfo,on_delete=models.CASCADE,default='1')
+    PropertyNumber =  models.PositiveIntegerField(blank=True)
+    Parcelmap = models.FileField(upload_to ='parcelmap/',null=True)
+    MasterplanMap = models.FileField(upload_to ='masterplanmap/',null=True)
+    def __str__(self):
+             return "%s" % (self.PropertyNumber)
+class Plotmap(models.Model):
+    id = models.AutoField(primary_key=True)
+    purchaseinfo = models.ForeignKey(Purchaseinfo,on_delete=models.CASCADE, default='1')
+    Lenght = models.CharField(max_length=500)
+    Width = models.CharField(max_length=500)
+
+
 class Sellerinfo(models.Model):
     Registrationid = models.AutoField(primary_key=True)
     Parcel =  models.ForeignKey(Parcel,on_delete=models.CASCADE)

@@ -318,10 +318,10 @@ def pForm(request, id=0):
                 form = Parcelform(request.POST)
            else:
               sneighbor = Parcel.objects.get(pk=id)
-              form = Parcelform(request.POST,instance= sneighbor,)
+              form = Parcelform(request.POST,instance= sneighbor)
            if form.is_valid():
               form.save()
-           return redirect('/phome')
+              return redirect('/phome')
 
 def pdelete(request,id):
     employee = Parcel.objects.get(pk=id)
